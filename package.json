@@ -1,0 +1,37 @@
+{
+  "name": "inventory-application",
+  "version": "1.0.0",
+  "description": "inventory application API",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "build-css": "npx tailwindcss -i ./public/stylesheets/style.css -o ./public/stylesheets/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bongani001/inventory-application.git"
+  },
+  "keywords": [
+    "inventory",
+    "api",
+    "food",
+    "api"
+  ],
+  "author": "Bongani Nyaku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bongani001/inventory-application/issues"
+  },
+  "homepage": "https://github.com/Bongani001/inventory-application#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "tailwindcss": "^3.4.16"
+  }
+}
