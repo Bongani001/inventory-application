@@ -6,10 +6,12 @@
     <title>Invetory Application</title>
     <link rel="stylesheet" href="/stylesheets/output.css" />
   </head>
-  <body>
+  <body class="bg-gray-100">
     <header class="bg-gray-700">
       <nav class="flex justify-between items-center p-4">
-        <h1 class="text-white text-2xl font-semibold">Inventory Application</h1>
+        <a href="/" class="text-white text-2xl font-semibold"
+          >Inventory Application</a
+        >
         <div class="space-x-4">
           <a
             class="text-white hover:bg-gray-400 hover:rounded p-2"
@@ -25,12 +27,19 @@
       </nav>
     </header>
     <main class="px-3">
-      <h2 class="text-xl text-green-700 font-semibold pt-2">
+      <h2 class="text-xl text-green-700 font-semibold py-2">
         Available Products:
-        <div>
-          <% products.forEach((product) => { %>
-          <div class="card">
-            <a href="/<%= product.id %>/update" class="card-link">Update</a>
+      </h2>
+
+      <div class="flex flex-wrap gap-4">
+        <% products.forEach((product) => { %>
+        <div class="bg-white shadow rounded p-4">
+          <div class="flex justify-between mb-2">
+            <a
+              href="/<%= product.id %>/update"
+              class="bg-blue-500 px-2 py-1 rounded text-white"
+              >Update</a
+            >
             <form
               action="/<%= product.id %>/delete"
               method="POST"
@@ -39,26 +48,27 @@
               <button
                 type="submit"
                 onclick="return confirm('Are you sure you want to delete this product?');"
-                class="delete-button"
+                class="bg-red-500 px-2 py-1 rounded text-white"
               >
                 Delete
               </button>
             </form>
-            <h2 class="product-name"><%= product.name %></h2>
-            <p class="product-description">
-              Description: <%= product.description %>
-            </p>
-            <p class="product-price">Price: <%= product.price %></p>
-            <p class="product-age-group">
-              Stock Quantity: <%= product.stock_quantity %>
-            </p>
-            <small class="product-date"
-              >Added on: <%= product.created_at.toLocaleString() %></small
-            >
           </div>
-          <% }); %>
+
+          <h2 class="text-xl font-semibold"><%= product.name %></h2>
+          <p class="product-description">
+            Description: <%= product.description %>
+          </p>
+          <p class="product-price">Price: <%= product.price %></p>
+          <p class="product-age-group">
+            Stock Quantity: <%= product.stock_quantity %>
+          </p>
+          <small class="product-date"
+            >Added on: <%= product.created_at.toLocaleString() %></small
+          >
         </div>
-      </h2>
+        <% }); %>
+      </div>
     </main>
   </body>
 </html>

@@ -15,11 +15,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const indexRouter = require("./routes/indexRouter");
 // const categoriesRouter = require("./routes/categoriesRoute");
-// const productsRouter = require("./routes/productsRoute");
+const productsRouter = require("./routes/productsRouter");
 
 app.use("/", indexRouter);
 // app.use("/categories", categoriesRouter);
-// app.use("/products", productsRouter);
+app.use("/products", productsRouter);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");

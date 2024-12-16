@@ -9,4 +9,12 @@ const getProducts = async (req, res) => {
   }
 };
 
-module.exports = { getProducts };
+const getProductForm = async (req, res) => {
+  try {
+    res.status(200).render("addProductForm");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { getProducts, getProductForm };
