@@ -7,7 +7,11 @@ router.get("/", productsController.getProducts);
 
 router.get("/addproduct", productsController.getProductForm);
 
+router.get("/:id/update", productsController.getUpdateProductForm);
+
 router.post("/addproduct", productsController.addProduct);
+
+router.post("/:id/update", productsController.updateProduct);
 
 router.post("/:id/delete", productsController.deleteProduct);
 

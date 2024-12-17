@@ -6,7 +6,7 @@
     <title>Invetory Application</title>
     <link rel="stylesheet" href="/stylesheets/output.css" />
   </head>
-  <body class="bg-gray-100">
+  <body class="bg-gray-800">
     <header class="bg-gray-700">
       <nav class="flex justify-between items-center p-4">
         <a href="/" class="text-white text-2xl font-semibold"
@@ -27,20 +27,22 @@
       </nav>
     </header>
     <main class="px-3">
-      <a href="/products/addproduct" class="bg-green-500 px-2 py-1 m-5 rounded"
+      <a
+        href="/products/addproduct"
+        class="bg-green-500 text-white px-2 py-1 my-4 inline-block rounded"
         >Add Product</a
       >
 
-      <h2 class="text-xl text-green-700 font-semibold py-2">
+      <h2 class="text-xl text-green-700 font-semibold mb-2">
         Available Products:
       </h2>
 
       <div class="flex flex-wrap gap-4">
         <% products.forEach((product) => { %>
-        <div class="bg-white shadow rounded p-4">
+        <div class="bg-gray-700 shadow rounded p-4">
           <div class="flex justify-between mb-2">
             <a
-              href="/<%= product.id %>/update"
+              href="/products/<%= product.id %>/update"
               class="bg-blue-500 px-2 py-1 rounded text-white"
               >Update</a
             >
@@ -59,15 +61,14 @@
             </form>
           </div>
 
-          <h2 class="text-xl font-semibold"><%= product.name %></h2>
-          <p class="product-description">
-            Description: <%= product.description %>
-          </p>
-          <p class="product-price">Price: <%= product.price %></p>
-          <p class="product-age-group">
+          <h2 class="text-xl text-white font-semibold"><%= product.name %></h2>
+          <p class="text-white">Description: <%= product.description %></p>
+          <p class="text-white">Price: <%= product.price %></p>
+          <p class="text-white">
             Stock Quantity: <%= product.stock_quantity %>
           </p>
-          <small class="product-date"
+          <p class="text-white">CategoryId: <%= product.category_id %></p>
+          <small class="text-white"
             >Added on: <%= product.created_at.toLocaleString() %></small
           >
         </div>

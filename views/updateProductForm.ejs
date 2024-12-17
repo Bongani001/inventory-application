@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Product</title>
+    <title>Update Product</title>
     <link rel="stylesheet" href="/stylesheets/output.css" />
   </head>
   <body class="bg-gray-100">
@@ -26,11 +26,33 @@
         </div>
       </nav>
     </header>
-    <main class="pt-5">
-      <div class="max-w-xl mx-auto bg-white p-6 rounded-md shadow-md">
-        <h1 class="text-2xl font-bold text-center mb-4">Add a New Product</h1>
+    <main class="">
+      <div class="max-w-xl mx-auto bg-white p-6 my-6 rounded-md shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-4">Update Product</h1>
         <form method="POST" class="space-y-4">
-          <!-- Name Input -->
+          <!-- Product Id -->
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700"
+              >Product ID</label
+            >
+            <input
+              type="number"
+              id="id"
+              name="id"
+              value="<%= product.id %>"
+              disabled
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+            <input
+              type="hidden"
+              id="id"
+              name="id"
+              value="<%= product.id %>"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+
+          <!-- Product Name -->
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700"
               >Product Name</label
@@ -39,14 +61,13 @@
               type="text"
               id="name"
               name="name"
+              value="<%= product.name %>"
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter product name"
-              minlength="2"
               required
             />
           </div>
 
-          <!-- Price Input -->
+          <!-- Price -->
           <div>
             <label for="price" class="block text-sm font-medium text-gray-700"
               >Price</label
@@ -56,13 +77,13 @@
               id="price"
               name="price"
               step="0.01"
+              value="<%= product.price %>"
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter product price"
               required
             />
           </div>
 
-          <!-- Stock Quantity Input -->
+          <!-- Stock Quantity -->
           <div>
             <label
               for="stock_quantity"
@@ -73,13 +94,13 @@
               type="number"
               id="stock_quantity"
               name="stock_quantity"
+              value="<%= product.stock_quantity %>"
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter product quantity"
               required
             />
           </div>
 
-          <!-- Category (Dropdown) -->
+          <!-- Category -->
           <div>
             <label
               for="category_id"
@@ -90,16 +111,25 @@
               id="category_id"
               name="category_id"
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              required
             >
-              <option value="" disabled selected>Select a category</option>
-              <% categories.forEach((category) => { %>
+              <% categories.map((category)=> { %> <% if (category.id ==
+              product.category_id) { %>
+              <option value="<%= category.id %>" selected>
+                <%= category.name %>
+              </option>
+              <% } else { %>
               <option value="<%= category.id %>"><%= category.name %></option>
-              <% }) %>
+              <% } %> <% }) %>
+              <!-- <% categories.forEach((category) => { %>
+                <option value="<%= category.id %>" <%= ( product.category_id == category.id ) ? 'selected' : '' %> >
+                  <%= category.name %>
+                </option>
+                 
+              <% }) %> -->
             </select>
           </div>
 
-          <!-- Description Input -->
+          <!-- Description -->
           <div>
             <label
               for="description"
@@ -111,8 +141,9 @@
               name="description"
               rows="4"
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter product description"
-            ></textarea>
+            >
+<%= product.description %></textarea
+            >
           </div>
 
           <!-- Submit Button -->
@@ -121,7 +152,7 @@
               type="submit"
               class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700"
             >
-              Add Product
+              Update Product
             </button>
           </div>
         </form>
