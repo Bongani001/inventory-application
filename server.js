@@ -14,11 +14,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 const indexRouter = require("./routes/indexRouter");
-// const categoriesRouter = require("./routes/categoriesRoute");
+const categoriesRouter = require("./routes/categoriesRouter");
 const productsRouter = require("./routes/productsRouter");
 
 app.use("/", indexRouter);
-// app.use("/categories", categoriesRouter);
+app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
 app.listen(3000, () => {
